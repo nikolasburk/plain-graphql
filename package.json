@@ -1,0 +1,16 @@
+{
+  "name": "gql-testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^0.11.7",
+    "graphql-tools": "^2.7.2"
+  }
+}
