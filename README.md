@@ -5,6 +5,8 @@ A simple node script to demonstrate the difference in how to build a `GraphQLSch
 - [graphql-js](https://github.com/nikolasburk/plain-graphql/tree/graphql-js)
 - [graphql-tools](https://github.com/nikolasburk/plain-graphql/tree/graphql-tools)
 
+Read the full article [here](https://medium.com/@graphcool/graphql-server-basics-the-schema-ac5e2950214e).
+
 ## Usage
 
 ### Grab code from this branch
@@ -23,30 +25,14 @@ yarn start
 
 ## graphql-js vs graphql-tools
 
-### graphql-js
+### Creating the `GraphQLSchema` with graphql-js
 
 ```js
 const UserType = new GraphQLObjectType({
   name: 'User',
   fields: {
-    id: { 
-      type: GraphQLID,
-      // `resolve` is not needed here: graphql-js infers the returned value.
-      // Remove the comments to see that it's called when the query contains the `id` field.
-      // resolve: (root, args, context, info) => {
-      //   console.log(`Resolver called: user.id`)
-      //   return root.id
-      // }
-    },
-    name: { 
-      type: GraphQLString,
-      // `resolve` is not needed here: graphql-js infers the returned value.
-      // Remove the comments to see that it's called when the query contains the `name` field.
-      // resolve: (root, args, context, info) => {
-      //   console.log(`Resolver called: user.name`)
-      //   return root.name
-      // }
-    }
+    id: { type: GraphQLID },
+    name: { type: GraphQLString }
   }
 })
 
@@ -70,7 +56,7 @@ const schema = new GraphQLSchema({
 ```
 
 
-### graphql-tools
+### Creating the `GraphQLSchema` with graphql-tools
 
 ```js
 const { makeExecutableSchema } = require('graphql-tools')
@@ -92,19 +78,7 @@ const resolvers = {
       console.log(`Resolver called: user`)
       return fetchUserById(args.id)
     }
-  },
-  // Resolvers for `User` are not needed here: graphql-js infers the returned values.
-  // Remove the comments to see that they're called when the query contains the `id` and `name` fields.
-  // User: {
-  //   id: (root, args, context, info) => {      
-  //     console.log(`Resolver called: user.id`)   
-  //     return root.id
-  //   },
-  //   name: (root, args, context, info) => {
-  //     console.log(`Resolver called: user.name`) 
-  //     return root.name
-  //   },
-  // },
+  }
 }
 
 const schema = makeExecutableSchema({
@@ -112,4 +86,3 @@ const schema = makeExecutableSchema({
   resolvers
 })
 ```
-
