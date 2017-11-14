@@ -9,10 +9,10 @@ Read the full article [here](https://medium.com/@graphcool/graphql-server-basics
 
 ## Usage
 
-### Grab code from this branch
+### Grab code from a branch (e.g. graphql-js)
 
 ```sh
-git clone -b graphql-tools git@github.com:nikolasburk/plain-graphql.git
+git clone -b graphql-js git@github.com:nikolasburk/plain-graphql.git
 ```
 
 ### Install dependencies and run the script
