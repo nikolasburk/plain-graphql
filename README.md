@@ -23,7 +23,7 @@ yarn start
 
 ## graphql-js vs graphql-tools
 
-### graphql-js
+### Creating the `GraphQLSchema` with graphql-js
 
 ```js
 const UserType = new GraphQLObjectType({
@@ -70,7 +70,7 @@ const schema = new GraphQLSchema({
 ```
 
 
-### graphql-tools
+### Creating the `GraphQLSchema` with graphql-tools
 
 ```js
 const { makeExecutableSchema } = require('graphql-tools')
