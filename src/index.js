@@ -29,8 +29,8 @@ const resolvers = {
       return fetchUserById(args.id)
     }
   },
-  // The resolvers for `User` are not required, graphql-js infers its return values.
-  // Uncomment the lines to see 
+  // Resolvers for `User` are not needed here: graphql-js infers the returned values.
+  // Remove the comments to see that they're called when the query contains the `id` and `name` fields.
   // User: {
   //   id: (root, args, context, info) => {      
   //     console.log(`Resolver called: user.id`)   
