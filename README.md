@@ -7,10 +7,10 @@ A simple node script to demonstrate the difference in how to build a `GraphQLSch
 
 ## Usage
 
-### Grab code from branch (e.g. `graphql-js`)
+### Grab code from this branch
 
 ```sh
-git clone -b graphql-js git@github.com:nikolasburk/plain-graphql.git
+git clone -b graphql-tools git@github.com:nikolasburk/plain-graphql.git
 ```
 
 ### Install dependencies and run the script
@@ -21,16 +21,56 @@ yarn install
 yarn start
 ```
 
-## `graphql-js` vs `graphql-tools`
+## graphql-js vs graphql-tools
 
-### `graphql-js`
+### graphql-js
 
 ```js
+const UserType = new GraphQLObjectType({
+  name: 'User',
+  fields: {
+    id: { 
+      type: GraphQLID,
+      // `resolve` is not needed here: graphql-js infers the returned value.
+      // Remove the comments to see that it's called when the query contains the `id` field.
+      // resolve: (root, args, context, info) => {
+      //   console.log(`Resolver called: user.id`)
+      //   return root.id
+      // }
+    },
+    name: { 
+      type: GraphQLString,
+      // `resolve` is not needed here: graphql-js infers the returned value.
+      // Remove the comments to see that it's called when the query contains the `name` field.
+      // resolve: (root, args, context, info) => {
+      //   console.log(`Resolver called: user.name`)
+      //   return root.name
+      // }
+    }
+  }
+})
 
+const schema = new GraphQLSchema({
+  query: new GraphQLObjectType({
+    name: 'Query',
+    fields: {
+      user: {
+        type: UserType,
+        args: {
+          id: { type: GraphQLID }
+        },
+        resolve: (root, args, context, info) => {
+          console.log(`Resolver called: user`)
+          return fetchUserById(args.id)
+        }
+      }
+    }
+  })
+})
 ```
 
 
-### `graphql-tools`
+### graphql-tools
 
 ```js
 const { makeExecutableSchema } = require('graphql-tools')
@@ -72,4 +112,3 @@ const schema = makeExecutableSchema({
   resolvers
 })
 ```
-
