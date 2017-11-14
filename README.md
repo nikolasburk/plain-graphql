@@ -7,7 +7,7 @@ A simple node script to demonstrate the difference in how to build a `GraphQLSch
 
 ## Usage
 
-### Grab code from this branch
+### Grab code from branch (e.g. `graphql-js`)
 
 ```sh
 git clone -b graphql-js git@github.com:nikolasburk/plain-graphql.git
