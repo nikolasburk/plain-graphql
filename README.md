@@ -21,9 +21,9 @@ yarn install
 yarn start
 ```
 
-## `graphql-js` vs `graphql-tools`
+## graphql-js vs graphql-tools
 
-### `graphql-js`
+### graphql-js
 
 ```js
 const UserType = new GraphQLObjectType({
@@ -70,7 +70,7 @@ const schema = new GraphQLSchema({
 ```
 
 
-### `graphql-tools`
+### graphql-tools
 
 ```js
 const { makeExecutableSchema } = require('graphql-tools')
